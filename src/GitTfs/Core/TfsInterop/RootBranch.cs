@@ -22,7 +22,7 @@ namespace GitTfs.Core.TfsInterop
         public string TfsBranchPath { get; private set; }
         public bool IsRenamedBranch { get; set; }
 
-        private string DebuggerDisplay
+        public string DebuggerDisplay
         {
             get
             {
