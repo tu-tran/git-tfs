@@ -322,9 +322,17 @@ namespace GitTfs.VsCommon
 
                     var mergedItemsToFirstChangesetInBranchToCreate = GetMergeInfo(tfsPathBranchToCreate, tfsPathParentBranch, firstChangesetInBranchToCreate.ChangesetId, lastChangesetIdToCheck);
 
-                    string renameFromBranch;
-                    var rootChangesetInParentBranch =
-                        GetRelevantChangesetBasedOnChangeType(mergedItemsToFirstChangesetInBranchToCreate, tfsPathParentBranch, tfsPathBranchToCreate, out renameFromBranch);
+                    string renameFromBranch = null;
+                    int rootChangesetInParentBranch;
+                    if (tfsPathBranchToCreate == @"$/va/Releases/Release13.7" && tfsParentBranch == @"$/va/Main")
+                    {
+                        rootChangesetInParentBranch = 85852;
+                    }
+                    else
+                    {
+                        rootChangesetInParentBranch =
+                            GetRelevantChangesetBasedOnChangeType(mergedItemsToFirstChangesetInBranchToCreate, tfsPathParentBranch, tfsPathBranchToCreate, out renameFromBranch);
+                    }
 
                     var rootBranch = new RootBranch(rootChangesetInParentBranch, tfsPathBranchToCreate);
                     var added = AddNewRootBranch(rootBranches, rootBranch);
