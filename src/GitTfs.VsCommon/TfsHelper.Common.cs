@@ -470,6 +470,12 @@ namespace GitTfs.VsCommon
                                       + "(Any help to add support of this special case is welcomed! Open an issue on https://github.com/git-tfs/git-tfs/issues )\n\n"
                                       + "To be able to continue to fetch the changesets from Tfs,\nplease enter the root changeset id between the branch '"
                                       + tfsPathBranchToCreate + "'\n and its parent branch '" + tfsPathParentBranch + "' by analysing the Tfs history...");
+                    if (tfsPathBranchToCreate == @"$/va/FeatureBranches/2013/Halcyon" && tfsPathParentBranch == @"$/va/FeatureBranches/2014/Tiger")
+                    {
+                        Trace.TraceInformation("warning: Selected C69204");
+                        return 69204;
+                    }
+
                     return AskForRootChangesetId();
                 }
             }
